@@ -1,0 +1,8 @@
+.Catalog {
+
+}
+
+.Catalog-entries {
+	display: flex;
+	flex-wrap: wrap;
+}
