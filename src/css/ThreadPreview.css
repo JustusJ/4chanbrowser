@@ -7,11 +7,47 @@
   margin: 0.3rem;
 }
 
+.ThreadPreview-actions {
+	display: flex;
+	width: 100%;
+}
+
+.ThreadPreview-action {
+	flex-grow: 1;
+	text-align: center;
+	cursor: pointer;
+}
+
+.ThreadPreview-action--hide:hover {
+	background-color: red;
+}
+
+.ThreadPreview-action--save:hover {
+	background-color: green;
+}
+
 .ThreadPreview-image {
+  
+}
+
+.ThreadPreview-img {
   max-height: 180px;
   max-width: 100%;
-  margin-bottom: auto;
 }
 
 .ThreadPreview-info {
+	font-size: 0.8rem;
+}
+
+.ThreadPreview-comment {
+	font-size: 0.8rem;
+	max-height: 2rem;
+	max-width: 100%;
+	margin-bottom: auto;
+	overflow: hidden;
+	text-align: center;
+}
+
+.ThreadPreview-comment--full {
+	max-height: inherit;
 }

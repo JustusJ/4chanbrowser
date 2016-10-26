@@ -10,18 +10,15 @@
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+.App-json-debug {
   text-align: left;
+  display: none;
+  width: 50vw;
+  overflow: scroll;
 
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-pre {
-  width: 50vw;
-  overflow: scroll;
 }
