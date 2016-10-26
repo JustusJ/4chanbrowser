@@ -2,6 +2,7 @@
   "name": "4chanbrowser",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://justusj.github.io/4chanbrowser/",
   "devDependencies": {
     "autoprefixer": "6.4.1",
     "babel-core": "6.14.0",
@@ -49,6 +50,9 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "gh-pages": "^0.11.0",
+    "jquery": "^3.1.1",
+    "keyboardjs": "^2.3.3",
     "react": "^15.3.2",
     "react-addons-perf": "^15.3.2",
     "react-addons-shallow-compare": "^15.3.2",
@@ -57,6 +61,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "deploy": "node scripts/build.js && node_modules/gh-pages/bin/gh-pages -d build",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
