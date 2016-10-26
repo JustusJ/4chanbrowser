@@ -12,6 +12,8 @@ import Catalog from './Catalog';
 
 var threadActionsCache = {};
 
+const REVISION = process.env.GIT_REVISION;
+
 class App extends Component {
 
   constructor() {
@@ -20,7 +22,8 @@ class App extends Component {
     this.state = {
       threads: [],
       catalogState: 'empty',
-      threadStates: Immutable.fromJS(threadStates)
+      threadStates: Immutable.fromJS(threadStates),
+      saveEnabled: true
     }
     this.sorters = ["tim", "images", "no"].map((field) => {
       return {sorter: this.sorter(field).bind(this), name: field}
@@ -32,7 +35,9 @@ class App extends Component {
   }
 
   saveThreadStates(threadStates) {
-    storage.set("threadStates", threadStates.toJS());
+    if(this.state.saveEnabled) {
+      storage.set("threadStates", threadStates.toJS());
+    }
   }
 
   getCatalog(board) {
@@ -159,10 +164,16 @@ setThreadState(board, threadNo, state) {
     this.setState({debugThread: thread});
   }
 
+  setSaveEnabled(event) {
+    this.setState({saveEnabled: event.target.checked});
+  }
+
   render() {
     return (
       <div className="App">
+        <div>{REVISION}</div>
         saved: {this.boardSavedThreads().length}, hidden: {this.hiddenThreads().length}, board: {this.state.board}
+        <label> Save: <input type="checkbox" onChange={this.setSaveEnabled.bind(this)} checked={this.state.saveEnabled} /></label>
         <div >
           {fchanApi.boards.map((board) => {
             return <a href='#' key={board} onClick={this.getCatalog.bind(this, board)}> {board} </a> 
