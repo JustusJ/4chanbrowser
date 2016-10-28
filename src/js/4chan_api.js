@@ -7,7 +7,8 @@ const imageBaseUrl = "//i.4cdn.org/$BOARD$/$FILENAME$";
 const threadBaseUrl = "https://boards.4chan.org/$BOARD$/thread/$NO$"
 
 function getCatalog(board) {
-	return getProxy(catalogBaseUrl.replace("$BOARD$", board)).then(flattenCatalog).done((threads) => enrichCatalog(board, threads));
+	var p = getProxy(catalogBaseUrl.replace("$BOARD$", board));
+	return p.then(flattenCatalog).then((threads) => enrichCatalog(board, threads));
 }
 
 function flattenCatalog(result) {
@@ -21,6 +22,8 @@ function enrichCatalog(board, threads) {
 		thread.previewImageUrl = boardImageBaseUrl.replace("$FILENAME$", thread.tim + thread.ext);
 		thread.url = threadBaseUrl.replace("$BOARD$", board).replace("$NO$", thread.no);
 	});
+
+	return threads;
 }
 
 export default {

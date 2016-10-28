@@ -1,12 +1,11 @@
-import $ from 'jquery';
+import axios from 'jquery';
+import querystring from 'querystring';
 
-window.$ = $;
-
-const proxyUrl = "https://roflzomfg.de/proxy.php";
+const proxyUrl = "https://roflzomfg.de/proxy.php?";
 
 function getProxy(url) {
-	var result = $.get(proxyUrl, {url: url, secret: 'sgadfiuzasdfgiuasfgsdaukfksagfhjhsd'})
-  return result;
+	var requestUrl = proxyUrl + querystring.stringify({url: url, secret: 'sgadfiuzasdfgiuasfgsdaukfksagfhjhsd'});
+  return axios.get(requestUrl);
 }
 
 export default getProxy;
