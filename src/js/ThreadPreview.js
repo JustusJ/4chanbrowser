@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../css/ThreadPreview.css"
+import "../css/ThreadPreview.scss"
 import classNames from "classnames";
 import shallowCompare from "react-addons-shallow-compare";
 
