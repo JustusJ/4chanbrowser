@@ -38,14 +38,29 @@ class ThreadPreview extends Component {
 		this.setState({showFull: !this.state.showFull});
 	}
 
+	isHidden() {
+		return !this.props.showAll && this.getState();
+	}
+
+	getState() {
+		return this.props.threadState && this.props.threadState.get("state");
+	}
+
 	render() {
-		if(this.props.threadState && this.props.threadState.get("state")) {
+		if(this.isHidden()) {
 			return null;
 		}
 		return <span className="ThreadPreview">
 			<div className="ThreadPreview-actions">
-				<a className="ThreadPreview-action ThreadPreview-action--hide" onClick={this.hideThread.bind(this)}> Hide </a>
-				<a className="ThreadPreview-action ThreadPreview-action--save" onClick={this.saveThread.bind(this)}> Save </a>
+				{this.getState() !== "hidden"
+					? <a className="ThreadPreview-action ThreadPreview-action--hide" onClick={this.hideThread.bind(this)}> Hide </a>
+					: null
+				}
+
+				{this.getState() !== "saved"
+					? <a className="ThreadPreview-action ThreadPreview-action--save" onClick={this.saveThread.bind(this)}> Save </a>
+					: null
+				}
 			</div>
 			<a className="ThreadPreview-image" href={this.props.thread.url}>
 				<img className="ThreadPreview-img" src={this.previewThumbUrl() } alt="" />

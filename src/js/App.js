@@ -168,12 +168,17 @@ setThreadState(board, threadNo, state) {
     this.setState({saveEnabled: event.target.checked});
   }
 
+  setShowAll(event) {
+    this.setState({showAll: event.target.checked}); 
+  }
+
   render() {
     return (
       <div className="App">
         <div>{REVISION}</div>
         saved: {this.boardSavedThreads().length}, hidden: {this.hiddenThreads().length}, board: {this.state.board}
         <label> Save: <input type="checkbox" onChange={this.setSaveEnabled.bind(this)} checked={this.state.saveEnabled} /></label>
+        <label> Show All: <input type="checkbox" onChange={this.setShowAll.bind(this)} checked={this.state.showAll} /></label>
         <div >
           {fchanApi.boards.map((board) => {
             return <a href='#' key={board} onClick={this.getCatalog.bind(this, board)}> {board} </a> 
@@ -186,7 +191,8 @@ setThreadState(board, threadNo, state) {
           loadState={this.state.catalogState}
           sorters={this.sorters}
           threadStates={this.boardThreadStates()}
-          threadActions={this.threadActions()} />
+          threadActions={this.threadActions()}
+          showAll={this.state.showAll} />
         
         <pre className={classNames("DebugThread", {'DebugThread--shown': this.state.debugThread})}>
           {JSON.stringify(this.state.debugThread, null, "\t")}

@@ -40,7 +40,8 @@ class Catalog extends Component {
 						key={thread.no + "x" + thread.tim}
 						thread={thread}
 						threadState={this.props.threadStates.get(thread.no.toString())}
-						threadActions={this.props.threadActions} />
+						threadActions={this.props.threadActions}
+						showAll={this.props.showAll} />
 				})}
 			</div>];
 	}
