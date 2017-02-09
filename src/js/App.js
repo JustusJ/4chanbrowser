@@ -26,7 +26,7 @@ class App extends Component {
       saveEnabled: true
     }
     this.sorters = ["tim", "images", "no"].map((field) => {
-      return {sorter: this.sorter(field).bind(this), name: field}
+      return {sort: this.sorter(field).bind(this), name: field}
     });
   }
 

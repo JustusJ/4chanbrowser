@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ThreadPreview from './ThreadPreview';
 //import Immutable from 'immutable';
 import "../css/Catalog.css";
+import "../css/Sorters.scss";
 
 class Catalog extends Component {
 
@@ -28,9 +29,9 @@ class Catalog extends Component {
 	}
 
 	contentLoaded() {
-		return [<div key="sorter">
+		return [<div key="sorters" className="Sorters">
 				{this.props.sorters.map((sorter) => {
-					return <a key={sorter.name} onClick={sorter.sorter}>{sorter.name}</a>	
+					return <a key={sorter.name} className="Sorters-sorter" onClick={sorter.sort}>{sorter.name}</a>	
 				})}
 			</div>
 			,
