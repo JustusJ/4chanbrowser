@@ -62,7 +62,7 @@ class App extends Component {
     });
   }
 
-  stateLessThreads() {
+  statelessThreads() {
     return this.state.threads.filter((thread) =>
       !this.state.threadStates.getIn(this.stateKeyPath(thread), null)
     );
@@ -99,7 +99,7 @@ class App extends Component {
   }
 
   hideFirstThread() {
-    var thread = this.stateLessThreads()[0];
+    var thread = this.statelessThreads()[0];
     return thread && this.hideThread(this.state.board, thread);
   }
 
@@ -113,7 +113,7 @@ class App extends Component {
   }
 
   saveFirstThread() {
-    var thread = this.stateLessThreads()[0];
+    var thread = this.statelessThreads()[0];
     return thread && this.saveThread(this.state.board, thread);
   }
 

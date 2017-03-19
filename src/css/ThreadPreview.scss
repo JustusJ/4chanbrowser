@@ -50,6 +50,12 @@ $margin: 0.3rem;
 .ThreadPreview-img {
   max-height: 180px;
   max-width: 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+body:hover .ThreadPreview-img {
+	opacity: 1;
 }
 
 .ThreadPreview-info {
