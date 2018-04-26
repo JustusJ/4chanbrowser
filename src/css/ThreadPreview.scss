@@ -22,6 +22,8 @@ $margin: 0.3rem;
 	align-items: center;
 	justify-content: flex-start;
   margin: $margin;
+  border: 1px solid grey;
+  padding: 4px;
 }
 
 .ThreadPreview-actions {
@@ -44,13 +46,17 @@ $margin: 0.3rem;
 }
 
 .ThreadPreview-image {
-  
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  width: 100%;
 }
 
 .ThreadPreview-img {
-  max-height: 180px;
-  max-width: 100%;
-  opacity: 0;
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 1;
   transition: opacity 0.2s;
 }
 
